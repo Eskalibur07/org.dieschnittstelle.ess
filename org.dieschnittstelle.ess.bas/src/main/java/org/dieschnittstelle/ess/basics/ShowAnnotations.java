@@ -5,9 +5,11 @@ import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
 
 import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static org.dieschnittstelle.ess.utils.Utils.*;
-// Miko
+
 public class ShowAnnotations {
 
 	public static void main(String[] args) {
@@ -39,7 +41,7 @@ public class ShowAnnotations {
 				a += " "+field.getName()+": "+field.get(consumable)+",";
 			}
 		}catch (Exception e){
-			e.printStackTrace();
+			Logger.getLogger(ShowAnnotations.class.getName()).log(Level.WARNING, e.getMessage());
 		}
 		a = a.substring(0, a.lastIndexOf(","));
 		a = "{"+a+"}";

@@ -7,7 +7,7 @@ import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
 import java.lang.reflect.Field;
 
 import static org.dieschnittstelle.ess.utils.Utils.*;
-
+// Miko
 public class ShowAnnotations {
 
 	public static void main(String[] args) {

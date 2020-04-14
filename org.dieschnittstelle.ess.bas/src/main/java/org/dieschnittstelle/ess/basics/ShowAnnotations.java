@@ -42,7 +42,7 @@ public class ShowAnnotations {
 		try {
 			for (Field field : consumable.getClass().getDeclaredFields()) {
 				field.setAccessible(true);
-				if(!checkIfDisplayAsIsAnnotated(field)) {
+				if(!field.isAnnotationPresent(DisplayAs.class)) {
 					a += " " + field.getName() + ": " + field.get(consumable) + ",";
 				}else{
 					a += " " + field.getName() + ": " + field.getAnnotation(DisplayAs.class).value() + ",";
@@ -54,14 +54,5 @@ public class ShowAnnotations {
 		a = a.substring(0, a.lastIndexOf(","));
 		a = "{"+a+"}";
 		show(a);
-	}
-
-	private static boolean checkIfDisplayAsIsAnnotated(Field field) {
-		final Annotation[] annotations = field.getAnnotations();
-		final List<Annotation> annotationsList = Arrays.asList(annotations);
-		for(Annotation annotation : annotationsList) {
-			return annotation instanceof DisplayAs;
-		}
-		return false;
 	}
 }

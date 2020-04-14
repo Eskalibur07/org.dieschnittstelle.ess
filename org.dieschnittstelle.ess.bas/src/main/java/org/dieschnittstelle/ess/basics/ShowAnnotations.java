@@ -4,6 +4,8 @@ package org.dieschnittstelle.ess.basics;
 import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
 
+import java.lang.reflect.Field;
+
 import static org.dieschnittstelle.ess.utils.Utils.*;
 
 public class ShowAnnotations {
@@ -30,7 +32,17 @@ public class ShowAnnotations {
 	 * UE BAS2 
 	 */
 	private static void showAttributes(Object consumable) {
-		show("class is: " + consumable.getClass());
+		String a = consumable.getClass().getSimpleName();
+		try {
+			for (Field field : consumable.getClass().getDeclaredFields()) {
+				field.setAccessible(true);
+				a += " "+field.getName()+": "+field.get(consumable)+",";
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		a = a.substring(0, a.lastIndexOf(","));
+		a = "{"+a+"}";
+		show(a);
 	}
-
 }

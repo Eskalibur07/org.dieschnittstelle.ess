@@ -2,9 +2,14 @@ package org.dieschnittstelle.ess.basics;
 
 
 import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
+import org.dieschnittstelle.ess.basics.annotations.DisplayAs;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
+import sun.reflect.annotation.AnnotationType;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,7 +43,11 @@ public class ShowAnnotations {
 		try {
 			for (Field field : consumable.getClass().getDeclaredFields()) {
 				field.setAccessible(true);
-				a += " "+field.getName()+": "+field.get(consumable)+",";
+				if(!checkIfDisplayAsIsAnnoted(field)) {
+					a += " " + field.getName() + ": " + field.get(consumable) + ",";
+				}else{
+					a += " " + field.getName() + ": " + field.getAnnotation(DisplayAs.class).value() + ",";
+				}
 			}
 		}catch (Exception e){
 			Logger.getLogger(ShowAnnotations.class.getName()).log(Level.WARNING, e.getMessage());
@@ -46,5 +55,14 @@ public class ShowAnnotations {
 		a = a.substring(0, a.lastIndexOf(","));
 		a = "{"+a+"}";
 		show(a);
+	}
+
+	private static boolean checkIfDisplayAsIsAnnoted(Field field) {
+		final Annotation[] annotations = field.getAnnotations();
+		final List<Annotation> annotationsList = Arrays.asList(annotations);
+		for(Annotation annotation : annotationsList) {
+			return annotation.annotationType().equals(DisplayAs.class);
+		}
+		return false;
 	}
 }

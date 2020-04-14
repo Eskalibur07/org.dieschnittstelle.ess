@@ -8,7 +8,7 @@ public class Milch {
 	@Units
 	private int menge;
 
-	@DisplayAs(value = "Markenname")
+	@DisplayAs(value = "markenname")
 	@Brandname
 	private String markenname;
 

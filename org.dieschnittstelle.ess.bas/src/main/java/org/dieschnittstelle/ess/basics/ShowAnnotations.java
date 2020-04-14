@@ -4,7 +4,6 @@ package org.dieschnittstelle.ess.basics;
 import org.dieschnittstelle.ess.basics.annotations.AnnotatedStockItemBuilder;
 import org.dieschnittstelle.ess.basics.annotations.DisplayAs;
 import org.dieschnittstelle.ess.basics.annotations.StockItemProxyImpl;
-import sun.reflect.annotation.AnnotationType;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static org.dieschnittstelle.ess.utils.Utils.*;
+import static org.dieschnittstelle.ess.utils.Utils.show;
 
 public class ShowAnnotations {
 
@@ -43,7 +42,7 @@ public class ShowAnnotations {
 		try {
 			for (Field field : consumable.getClass().getDeclaredFields()) {
 				field.setAccessible(true);
-				if(!checkIfDisplayAsIsAnnoted(field)) {
+				if(!checkIfDisplayAsIsAnnotated(field)) {
 					a += " " + field.getName() + ": " + field.get(consumable) + ",";
 				}else{
 					a += " " + field.getName() + ": " + field.getAnnotation(DisplayAs.class).value() + ",";
@@ -57,11 +56,11 @@ public class ShowAnnotations {
 		show(a);
 	}
 
-	private static boolean checkIfDisplayAsIsAnnoted(Field field) {
+	private static boolean checkIfDisplayAsIsAnnotated(Field field) {
 		final Annotation[] annotations = field.getAnnotations();
 		final List<Annotation> annotationsList = Arrays.asList(annotations);
 		for(Annotation annotation : annotationsList) {
-			return annotation.annotationType().equals(DisplayAs.class);
+			return annotation instanceof DisplayAs;
 		}
 		return false;
 	}

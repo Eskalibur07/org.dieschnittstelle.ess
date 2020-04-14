@@ -8,7 +8,7 @@ public class Schokolade {
 	@Units
 	private int anzahlStuecke;
 
-	@DisplayAs(value = "Markenname")
+	@DisplayAs(value = "marke")
 	private String marke;
 
 	public int getAnzahlStuecke() {

@@ -251,16 +251,16 @@ public class ShowTouchpointService {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(bos);
 
+			show("bos before writeObject(): %s", bos);
+
 			// latter must be accessible via a variable
 			oos.writeObject(tp);
 
-			byte[] objectData = bos.toByteArray();
-
 			// write the object to the output stream
-			show("objectData: %s", objectData);
+			show("bos after writeObject(): %s", bos);
 
 			// create a ByteArrayEntity and pass it the byte array from the
-			ByteArrayEntity bae = new ByteArrayEntity(objectData);
+			ByteArrayEntity bae = new ByteArrayEntity(bos.toByteArray());
 
 			// output stream
 
@@ -281,21 +281,20 @@ public class ShowTouchpointService {
 				/* if successful: */
 
 				// create an object input stream using getContent() from the
-				ObjectInputStream ois = new ObjectInputStream(response.getEntity().getContent());
 				// response entity (accessible via getEntity())
+				ObjectInputStream ois = new ObjectInputStream(response.getEntity().getContent());
 
 				// read the touchpoint object from the input stream
-				AbstractTouchpoint receivvedTouchpoint = (AbstractTouchpoint) ois.readObject();
+				AbstractTouchpoint createdTp = (AbstractTouchpoint) ois.readObject();
 
-				show("receivedTouchpoint: %s", receivvedTouchpoint);
-				show("tp == receivedTouchpoint: %s", (tp == receivvedTouchpoint));
+				show("receivedTouchpoint: %s", createdTp);
 
 				// cleanup the request
 
 				// EntityUtils.consume(response.getEntity());
 				EntityUtils.consume(response.getEntity());
 				// return the object that you have read from the response;
-				return receivvedTouchpoint;
+				return createdTp;
 			}
 
 			return null;

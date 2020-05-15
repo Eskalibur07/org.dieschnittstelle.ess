@@ -18,7 +18,16 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
 	/**
 	 * this accessor will be provided by the ServletContext, to which it is written by the TouchpointServletContextListener
 	 */
+
+	// private ServletContext servletContext;
+	// @Context
+	// private HttpServletRequest servletRequest;
+
 	private GenericCRUDExecutor<AbstractTouchpoint> touchpointCRUD;
+
+	/*{
+		return (GenericCRUDExecutor<AbstractTouchpoint>) servletContext.getAttribute("touchPointCRUD");
+	}*/
 
 	/**
 	 * here we will be passed the context parameters by the resteasy framework
@@ -57,5 +66,9 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
 	/*
 	 * UE JRS1: implement the method for updating touchpoints
 	 */
+	@Override
+	public StationaryTouchpoint updateTouchpoint(long id, StationaryTouchpoint touchpoint) {
+		return (StationaryTouchpoint)this.touchpointCRUD.updateObject(touchpoint);
+	}
 
 }

@@ -14,7 +14,7 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 	public IndividualisedProductItem createProduct(
 			IndividualisedProductItem prod) {
 		// TODO Auto-generated method stub
-		return null;
+		return prod;
 	}
 
 	@Override

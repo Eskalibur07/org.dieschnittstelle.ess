@@ -5,9 +5,12 @@ import org.dieschnittstelle.ess.basics.annotations.*;
 @StockItem
 public class Milch {
 
+
+	// @DisplayAs("amount")
 	@Units
 	private int menge;
 
+	// @DisplayAs("brandname")
 	@DisplayAs(value = "markenname")
 	@Brandname
 	private String markenname;

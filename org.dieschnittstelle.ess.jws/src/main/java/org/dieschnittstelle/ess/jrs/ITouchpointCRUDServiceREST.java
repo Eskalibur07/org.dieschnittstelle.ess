@@ -4,13 +4,7 @@ import java.util.List;
 
 import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 @Path("/touchpoints")
 @Consumes({ "application/json" })
@@ -34,5 +28,7 @@ public interface ITouchpointCRUDServiceREST {
 	/*
 	 * UE JRS: add a new annotated method for using the updateTouchpoint functionality of TouchpointCRUDExecutor and implement it
 	 */
-	
+	@PUT
+	@Path("/{touchpointId}")
+	StationaryTouchpoint updateTouchpoint(@PathParam("touchpointId") long id, StationaryTouchpoint touchpoint);
 }

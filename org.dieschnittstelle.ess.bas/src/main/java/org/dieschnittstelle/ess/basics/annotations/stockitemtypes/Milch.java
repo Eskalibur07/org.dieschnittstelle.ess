@@ -6,11 +6,10 @@ import org.dieschnittstelle.ess.basics.annotations.*;
 public class Milch {
 
 
-	// @DisplayAs("amount")
+	@DisplayAs("menge")
 	@Units
 	private int menge;
 
-	// @DisplayAs("brandname")
 	@DisplayAs(value = "markenname")
 	@Brandname
 	private String markenname;

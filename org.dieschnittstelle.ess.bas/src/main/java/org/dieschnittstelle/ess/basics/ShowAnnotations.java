@@ -24,7 +24,7 @@ public class ShowAnnotations {
 		collection.load();
 
 		for (IStockItem consumable : collection.getStockItems()) {
-			;
+
 			showAttributes(((StockItemProxyImpl)consumable).getProxiedObject());
 		}
 

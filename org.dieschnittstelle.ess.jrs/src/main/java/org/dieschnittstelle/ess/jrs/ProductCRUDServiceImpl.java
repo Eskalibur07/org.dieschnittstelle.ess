@@ -2,6 +2,7 @@ package org.dieschnittstelle.ess.jrs;
 
 import java.util.List;
 
+import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 /*
@@ -11,21 +12,20 @@ UE JRS2: implementieren Sie hier die im Interface deklarierten Methoden
 public class ProductCRUDServiceImpl implements IProductCRUDService {
 
 	@Override
-	public IndividualisedProductItem createProduct(
-			IndividualisedProductItem prod) {
+	public AbstractProduct createProduct(
+			AbstractProduct prod) {
 		// TODO Auto-generated method stub
 		return prod;
 	}
 
 	@Override
-	public List<IndividualisedProductItem> readAllProducts() {
+	public List<AbstractProduct> readAllProducts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IndividualisedProductItem updateProduct(long id,
-			IndividualisedProductItem update) {
+	public AbstractProduct updateProduct(long id, AbstractProduct update) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,7 +37,7 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 	}
 
 	@Override
-	public IndividualisedProductItem readProduct(long id) {
+	public AbstractProduct readProduct(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

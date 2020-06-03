@@ -112,7 +112,7 @@ public class TouchpointCRUDService {
 	 */
 
 	// Yapilmasi gerekiyor
-	@WebMethod
+	/*@WebMethod
 	public AbstractTouchpoint updateTouchpoint(AbstractTouchpoint touchpoint) {
 		// obtain the CRUD executor from the servlet context
 		GenericCRUDExecutor<AbstractTouchpoint> touchpointCRUD = (GenericCRUDExecutor<AbstractTouchpoint>) ((ServletContext) wscontext
@@ -121,6 +121,6 @@ public class TouchpointCRUDService {
 
 		return (StationaryTouchpoint) touchpointCRUD
 				.updateObject(touchpoint);
-	}
+	}*/
 
 }

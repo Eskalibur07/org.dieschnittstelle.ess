@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.servlet.ServletContext;
+import javax.websocket.server.PathParam;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -46,12 +47,12 @@ public class ProductCRUDService {
 	}
 	@DELETE
 	@Path("/{productId")
-	public boolean deleteProduct(long id) {
+	public boolean deleteProduct(@PathParam("/{productId") long id) {
 		return false;
 	}
 	@GET
 	@Path("/{productId")
-	public AbstractProduct readProduct(long id) {
+	public AbstractProduct readProduct(@PathParam("/{productId") long id) {
 		return null;
 	}
 

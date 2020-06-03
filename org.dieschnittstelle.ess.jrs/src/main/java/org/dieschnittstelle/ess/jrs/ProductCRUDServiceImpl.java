@@ -18,6 +18,7 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 		return prod;
 	}
 
+	// Düzeltilmeli!!!!
 	@Override
 	public List<AbstractProduct> readAllProducts() {
 		// TODO Auto-generated method stub

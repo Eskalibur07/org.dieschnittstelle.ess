@@ -19,6 +19,7 @@ public class ProductBundle implements Serializable {
 
 	private long id;
 
+	// AbstractProduct olmali IndividuelisedProd....
 	private IndividualisedProductItem product;
 
 	private int units;

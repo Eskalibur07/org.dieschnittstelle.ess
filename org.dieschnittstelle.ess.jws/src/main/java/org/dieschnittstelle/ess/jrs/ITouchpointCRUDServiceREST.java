@@ -29,6 +29,5 @@ public interface ITouchpointCRUDServiceREST {
 	 * UE JRS: add a new annotated method for using the updateTouchpoint functionality of TouchpointCRUDExecutor and implement it
 	 */
 	@PUT
-	@Path("/{touchpointId}")
-	StationaryTouchpoint updateTouchpoint(@PathParam("touchpointId") long id, StationaryTouchpoint touchpoint);
+	StationaryTouchpoint updateTouchpoint(long id, StationaryTouchpoint touchpoint);
 }

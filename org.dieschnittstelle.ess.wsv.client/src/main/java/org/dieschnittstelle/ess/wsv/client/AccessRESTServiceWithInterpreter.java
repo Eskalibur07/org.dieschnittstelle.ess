@@ -1,6 +1,7 @@
 package org.dieschnittstelle.ess.wsv.client;
 
 import java.io.IOException;
+import java.lang.reflect.Proxy;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
@@ -31,7 +32,11 @@ public class AccessRESTServiceWithInterpreter {
 		/*
 		 * TODO: create a client for the web service using Proxy.newProxyInstance()
 		 */
-        ITouchpointCRUDService serviceProxy = null;
+        ITouchpointCRUDService serviceProxy = (ITouchpointCRUDService) Proxy.newProxyInstance(
+                AccessRESTServiceWithInterpreter.class.getClassLoader(),
+                new Class[]{ITouchpointCRUDService.class},
+                invocationHandler
+        );
 
         show("serviceProxy: " + serviceProxy);
 

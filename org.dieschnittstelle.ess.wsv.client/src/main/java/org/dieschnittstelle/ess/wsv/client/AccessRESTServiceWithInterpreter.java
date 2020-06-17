@@ -27,7 +27,7 @@ public class AccessRESTServiceWithInterpreter {
 		 * TODO: create an instance of the invocation handler passing the service
 		 * interface and the base url
 		 */
-        JAXRSClientInterpreter invocationHandler = null;
+        JAXRSClientInterpreter invocationHandler = new JAXRSClientInterpreter(ITouchpointCRUDService.class,"http://localhost:8888/org.dieschnittstelle.ess.jrs/api/");
 
 		/*
 		 * TODO: create a client for the web service using Proxy.newProxyInstance()

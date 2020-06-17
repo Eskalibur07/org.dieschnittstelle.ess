@@ -1,5 +1,6 @@
-/*
-package org.dieschnittstelle.ess.ejb.ejbmodule.crm.shopping;
+/*package org.dieschnittstelle.ess.ejb.ejbmodule.crm.shopping;
+
+import org.dieschnittstelle.ess.ejb.ejbmodule.crm.ShoppingException;
 
 import javax.ejb.Remote;
 import javax.ws.rs.*;
@@ -10,8 +11,8 @@ import javax.ws.rs.core.MediaType;
 @Produces({MediaType.APPLICATION_JSON})
 @Remote
 public interface PurchaseShoppingCartService {
+    *//*@POST
+    puclic void purchase(@QueryParam("shoppingCartId") long shoppingCartId, @QueryParam("touchpointId") long touchpointId, @QueryParam("customerId") long customerId throws ShoppingException);*//*
+}*/
 
-    @POST
-    puclic void purchase(@QueryParam("shoppingCartId") long shoppingCartId, @QueryParam());
-}
-*/
+// SIOKI - Hata veriyor 

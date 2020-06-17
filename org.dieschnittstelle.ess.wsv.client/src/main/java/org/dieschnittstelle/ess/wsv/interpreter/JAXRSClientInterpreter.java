@@ -97,6 +97,7 @@ public class JAXRSClientInterpreter implements InvocationHandler {
         // TODO: check whether we have method arguments - only consider pathparam annotations (if any) on the first argument here - if no args are passed, the value of args is null! if no pathparam annotation is present assume that the argument value is passed via the body of the http request
         if (args != null && args.length > 0) {
             if (meth.getParameterAnnotations()[0].length > 0 && meth.getParameterAnnotations()[0][0].annotationType() == PathParam.class) {
+                // Hier muss gemacht werden - SIOKI
                 // TODO: handle PathParam on the first argument - do not forget that in this case we might have a second argument providing a bodyValue
                 // TODO: if we have a path param, we need to replace the corresponding pattern in the url with the parameter value
             }
@@ -130,15 +131,15 @@ public class JAXRSClientInterpreter implements InvocationHandler {
         if (bodyValue != null) {
 
             // TODO: use a ByteArrayOutputStream for writing json
-
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
             // TODO: write the object to the stream using the jsonSerialiser
-
+            jsonSerialiser.writeObject(bodyValue,bos);
             // TODO: create an ByteArrayEntity from the stream's content
-
+            bae = new ByteArrayEntity(bos.toByteArray());
             // TODO: set the entity on the request, which must be cast to HttpEntityEnclosingRequest
-
+            ((HttpEntityEnclosingRequest)request).setEntity(bae);
             // TODO: and add a content type header for the request
-
+            request.setHeader(HttpHeaders.CONTENT_TYPE,MediaType.APPLICATION_JSON);
         }
 
         logger.info("invoke(): executing request: " + request);

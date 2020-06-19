@@ -1,4 +1,4 @@
-/*package org.dieschnittstelle.ess.ejb.ejbmodule.crm.shopping;
+package org.dieschnittstelle.ess.ejb.ejbmodule.crm.shopping;
 
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.ShoppingException;
 
@@ -11,8 +11,9 @@ import javax.ws.rs.core.MediaType;
 @Produces({MediaType.APPLICATION_JSON})
 @Remote
 public interface PurchaseShoppingCartService {
-    *//*@POST
-    puclic void purchase(@QueryParam("shoppingCartId") long shoppingCartId, @QueryParam("touchpointId") long touchpointId, @QueryParam("customerId") long customerId throws ShoppingException);*//*
-}*/
 
-// SIOKI - Hata veriyor 
+    @POST
+    public void purchase(@QueryParam("shoppingCartId") long shoppingCartId, @QueryParam("touchpointId") long touchpointId, @QueryParam("customerId") long customerId) throws ShoppingException;
+}
+
+// SIOKI - ShoppingException ´ Hata veriyor

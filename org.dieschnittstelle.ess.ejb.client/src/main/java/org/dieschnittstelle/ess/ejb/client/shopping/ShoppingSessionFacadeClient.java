@@ -17,6 +17,7 @@ public class ShoppingSessionFacadeClient implements ShoppingBusinessDelegate {
 	protected static Logger logger = org.apache.logging.log4j.LogManager
 			.getLogger(ShoppingSessionFacadeClient.class);
 
+
 	private AbstractTouchpoint touchpoint;
 
 	private Customer customer;
@@ -66,6 +67,7 @@ public class ShoppingSessionFacadeClient implements ShoppingBusinessDelegate {
 	@Override
 	public void purchase() throws ShoppingException {
 		// SIOKI - getshoppingCartId() yi görmüyor minna
+		// ESS 10 PAT-2 Demo PAT1-teil1 53:34
 		/*this.purchaseShoppingCartService
 				.purchase(shoppingCartClient.getshoppingCartEntityId(), touchpoint.getId(), customer.getId());*/
 	}

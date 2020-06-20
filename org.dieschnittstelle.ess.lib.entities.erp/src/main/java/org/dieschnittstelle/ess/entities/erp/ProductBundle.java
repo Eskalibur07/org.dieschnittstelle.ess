@@ -19,8 +19,7 @@ public class ProductBundle implements Serializable {
 
 	private long id;
 
-	// AbstractProduct olmali IndividuelisedProd....
-	private IndividualisedProductItem product;
+	private AbstractProduct product;
 
 	private int units;
 
@@ -33,11 +32,11 @@ public class ProductBundle implements Serializable {
 		this.units = units;
 	}
 
-	public IndividualisedProductItem getProduct() {
+	public AbstractProduct getProduct() {
 		return this.product;
 	}
 
-	public void setProduct(IndividualisedProductItem product) {
+	public void setProduct(AbstractProduct product) {
 		this.product = product;
 	}
 

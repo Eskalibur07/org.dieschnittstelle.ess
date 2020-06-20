@@ -15,5 +15,3 @@ public interface PurchaseShoppingCartService {
     @POST
     public void purchase(@QueryParam("shoppingCartId") long shoppingCartId, @QueryParam("touchpointId") long touchpointId, @QueryParam("customerId") long customerId) throws ShoppingException;
 }
-
-// SIOKI - ShoppingException ´ Hata veriyor

@@ -9,7 +9,10 @@ import org.dieschnittstelle.ess.entities.erp.StockItem;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 public class StockSystemSingleton implements StockSystemLocal{
@@ -46,12 +49,26 @@ public class StockSystemSingleton implements StockSystemLocal{
 
     @Override
     public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
-        return null;
+/*        List<StockItem> silist = siCrud
+                .readStockItemsForPointOfSale(posCrud.readPointOfSale(pointOfSaleId));
+        List<IndividualisedProductItem> productItems = new ArrayList<>();
+        for (StockItem si : silist) {
+            productItems.add(si.getProduct());
+        }
+        return productItems;*/
+
+
+
+        return new ArrayList<>(siCrud
+                .readStockItemsForPointOfSale(posCrud.readPointOfSale(pointOfSaleId))
+                .stream()
+                .map(si -> si.getProduct())
+                .collect(Collectors.toSet()));
     }
 
     @Override
     public List<IndividualisedProductItem> getAllProductsOnStock() {
-        return null;
+        return new ArrayList<>(new HashSet<>());
     }
 
     @Override

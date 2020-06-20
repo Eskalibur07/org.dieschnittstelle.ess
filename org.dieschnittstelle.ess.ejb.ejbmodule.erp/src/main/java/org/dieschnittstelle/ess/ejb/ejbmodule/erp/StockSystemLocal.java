@@ -3,10 +3,12 @@ package org.dieschnittstelle.ess.ejb.ejbmodule.erp;
 import java.util.List;
 
 import javax.ejb.Local;
+import javax.ejb.Remote;
 
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import org.dieschnittstelle.ess.entities.erp.StockItem;
 
+@Local
 public interface StockSystemLocal {
 
 	/**

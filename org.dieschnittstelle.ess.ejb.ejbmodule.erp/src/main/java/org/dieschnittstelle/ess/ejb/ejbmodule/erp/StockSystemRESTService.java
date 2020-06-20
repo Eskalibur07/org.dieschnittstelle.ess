@@ -2,6 +2,10 @@ package org.dieschnittstelle.ess.ejb.ejbmodule.erp;
 
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
+import javax.ejb.Remote;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -12,17 +16,25 @@ import java.util.List;
  * - in the EJB, delegate method invocations to the corresponding methods of the StockSystem EJB
  * - let the StockSystemClient in the client project access the web api via this interface - see ShoppingCartClient for an example
  */
+@Remote
+@Path("/stocksystem")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public interface StockSystemRESTService {
 
 	/**
 	 * adds some units of a product to the stock of a point of sale
 	 */
-    void addToStock(long productId, long pointOfSaleId, int units);
+	@POST
+	@Path("/{productId}/{pointOfSaleId}/{units}")
+    void addToStock(@PathParam("productId") long productId, @PathParam("pointOfSaleId") long pointOfSaleId, @PathParam("units") int units);
 
 	/**
 	 * removes some units of a product from the stock of a point of sale
 	 */
-    void removeFromStock(long productId, long pointOfSaleId, int units);
+	@DELETE
+	@Path("/{productId}/{pointOfSaleId}/{units}")
+	void removeFromStock(@PathParam("productId") long productId, @PathParam("pointOfSaleId") long pointOfSaleId, @PathParam("units") int units);
 
 	/**
 	 * returns all products on stock of some pointOfSale

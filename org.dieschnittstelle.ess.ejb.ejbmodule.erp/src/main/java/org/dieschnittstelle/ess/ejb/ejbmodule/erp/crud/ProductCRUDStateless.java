@@ -2,12 +2,14 @@ package org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud;
 
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class ProductCRUDStateless implements ProductCRUDRemote {
 
     @PersistenceContext(unitName = "erp_PU")
@@ -32,7 +34,8 @@ public class ProductCRUDStateless implements ProductCRUDRemote {
 
     @Override
     public AbstractProduct readProduct(long productID) {
-        // TODO Sioki - em.find(AbstractProduct.class.productID);
+       // Todo Sioki - productID bulunamyior
+        //return em.find(AbstractProduct.class.pruductID);
         return null;
     }
 

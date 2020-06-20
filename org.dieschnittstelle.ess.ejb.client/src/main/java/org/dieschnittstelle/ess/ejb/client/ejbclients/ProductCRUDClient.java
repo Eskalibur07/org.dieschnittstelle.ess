@@ -31,23 +31,23 @@ public class ProductCRUDClient implements ProductCRUDRemote {
 	}
 
 	public List<AbstractProduct> readAllProducts() {
-//		return ejbProxy.readAllProducts();
-		return null;
+		return ejbProxy.readAllProducts();
+//		return null;
 	}
 
 	public AbstractProduct updateProduct(AbstractProduct update) {
-//		return ejbProxy.updateProduct(update);
-		return null;
+		return ejbProxy.updateProduct(update);
+//		return null;
 	}
 
 	public AbstractProduct readProduct(long productID) {
-//		return ejbProxy.readProduct(productID);
-		return null;
+		return ejbProxy.readProduct(productID);
+//		return null;
 	}
 
 	public boolean deleteProduct(long productID) {
-//		return ejbProxy.deleteProduct(productID);
-		return false;
+		return ejbProxy.deleteProduct(productID);
+//		return false;
 	}
 
 }

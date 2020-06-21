@@ -34,9 +34,7 @@ public class ProductCRUDStateless implements ProductCRUDRemote {
 
     @Override
     public AbstractProduct readProduct(long productID) {
-       // Todo Sioki - productID bulunamyior
-        //return em.find(AbstractProduct.class.pruductID);
-        return null;
+        return em.find(AbstractProduct.class, productID);
     }
 
     @Override

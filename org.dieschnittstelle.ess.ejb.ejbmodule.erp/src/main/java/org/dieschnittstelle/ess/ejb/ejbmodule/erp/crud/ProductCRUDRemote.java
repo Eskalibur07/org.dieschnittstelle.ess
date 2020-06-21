@@ -6,6 +6,7 @@ import java.util.List;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
 import javax.ejb.Remote;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -20,8 +21,10 @@ import javax.ws.rs.core.MediaType;
 @Produces({MediaType.APPLICATION_JSON})
 public interface ProductCRUDRemote {
 
+	@NotNull
 	@POST
 	public AbstractProduct createProduct(AbstractProduct prod);
+	@NotNull
 	@GET
 	public List<AbstractProduct> readAllProducts();
 	@PUT

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.persistence.*;
 
+@Entity
 public class ProductBundle implements Serializable {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(ProductBundle.class);

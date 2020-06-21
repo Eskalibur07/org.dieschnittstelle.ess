@@ -32,7 +32,6 @@ public class PurchaseShoppingCartServiceStateless implements PurchaseShoppingCar
     @EJB(beanName = "ShoppingCartRESTServiceImpl")
     private ShoppingCartServiceLocal shoppingCartServiceLocal;
 
-
     @EJB
     private CustomerTrackingRemote customerTracking;
 

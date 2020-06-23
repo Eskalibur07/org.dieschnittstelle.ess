@@ -4,12 +4,14 @@ import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.*;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.CustomerCRUDLocal;
 import org.dieschnittstelle.ess.ejb.ejbmodule.crm.crud.TouchpointCRUDLocal;
+import org.dieschnittstelle.ess.ejb.ejbmodule.erp.StockSystemLocal;
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.Customer;
 import org.dieschnittstelle.ess.entities.crm.CustomerTransaction;
 import org.dieschnittstelle.ess.entities.crm.ShoppingCartItem;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.Campaign;
+import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -43,6 +45,9 @@ public class PurchaseShoppingCartServiceStateless implements PurchaseShoppingCar
 
     @EJB
     private TouchpointCRUDLocal touchpointCRUDLocal;
+
+    @EJB
+    private StockSystemLocal stockSystemLocal;
 
     /**
      * the customer
@@ -135,10 +140,36 @@ public class PurchaseShoppingCartServiceStateless implements PurchaseShoppingCar
                 // - falls verfuegbar, aus dem Warenlager entfernen - nutzen Sie dafür die StockSystem EJB
                 // (Anm.: item.getUnits() gibt Ihnen Auskunft darüber, wie oft ein Produkt, im vorliegenden Fall eine Kampagne, im
                 // Warenkorb liegt)
+                List<IndividualisedProductItem> itemsOnStock = this.stockSystemLocal.getProductsOnStock(item.getId());
+                int amount = 0;
+                for(IndividualisedProductItem individualisedProductItem : itemsOnStock) {
+                    if(individualisedProductItem.getId() == item.getId()) {
+                        amount++;
+                    }
+                }
+                if(amount == item.getUnits()) {
+                    for(IndividualisedProductItem individualisedProductItem : itemsOnStock) {
+                        if(individualisedProductItem.getId() == item.getId()) {
+                            this.stockSystemLocal.removeFromStock(individualisedProductItem, individualisedProductItem.getId(), item.getUnits());
+                        }
+                    }
+                }
             } else {
                 // TODO: andernfalls (wenn keine Kampagne vorliegt) muessen Sie
                 // 1) das Produkt in der in item.getUnits() angegebenen Anzahl hinsichtlich Verfuegbarkeit ueberpruefen und
                 // 2) das Produkt, falls verfuegbar, in der entsprechenden Anzahl aus dem Warenlager entfernen
+                List<IndividualisedProductItem> itemsOnStock = this.stockSystemLocal.getProductsOnStock(item.getId());
+                int amount = 0;
+                for(IndividualisedProductItem individualisedProductItem : itemsOnStock) {
+                    if(individualisedProductItem.getId() == item.getId()) {
+                        amount++;
+                    }
+                }
+                if(amount == item.getUnits()) {
+                    for(IndividualisedProductItem individualisedProductItem : itemsOnStock) {
+                        this.stockSystemLocal.removeFromStock(individualisedProductItem, individualisedProductItem.getId(), item.getUnits());
+                    }
+                }
             }
 
         }

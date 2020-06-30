@@ -61,7 +61,7 @@ public class TouchpointServiceServlet extends HttpServlet {
 
 		// obtain the executor for reading out the touchpoints from the servlet context using the touchpointCRUD attribute
 
-		TouchpointCRUDExecutor exec = (TouchpointCRUDExecutor) getServletContext().getAttribute("TouchPointCRUD");
+		TouchpointCRUDExecutor exec = (TouchpointCRUDExecutor) getServletContext().getAttribute("touchpointCRUD");
 
 		try {
 			// create an ObjectInputStream from the request's input stream

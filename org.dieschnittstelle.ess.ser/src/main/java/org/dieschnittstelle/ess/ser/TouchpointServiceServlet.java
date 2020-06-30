@@ -72,7 +72,7 @@ public class TouchpointServiceServlet extends HttpServlet {
 			tp = exec.createTouchpoint(tp);
 			// set the response status as successful, using the appropriate
 			// constant from HttpServletResponse
-			response.setStatus(HttpServletResponse.SC_ACCEPTED);
+			response.setStatus(HttpServletResponse.SC_CREATED);
 
 			ObjectOutputStream oos = new ObjectOutputStream(response.getOutputStream());
 			// then write the object to the response's output stream, using a

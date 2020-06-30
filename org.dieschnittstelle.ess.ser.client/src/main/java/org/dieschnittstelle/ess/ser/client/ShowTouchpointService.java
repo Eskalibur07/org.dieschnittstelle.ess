@@ -263,15 +263,12 @@ public class ShowTouchpointService {
 			ByteArrayEntity bae = new ByteArrayEntity(bos.toByteArray());
 
 			// output stream
-			// logger.info("readAllTouchpoints(): about to execute request: " + get);
 			// set the entity on the request
 			request.setEntity(bae);
 			// execute the request, which will return a Future<HttpResponse> object
 			Future<HttpResponse> responseFuture = client.execute(request, null);
-			// logger.info("readAllTouchpoints(): received response future...");
 			// get the response from the Future object
 			HttpResponse response = responseFuture.get();
-			// logger.info("readAllTouchpoints(): received response value...");
 			// log the status line
 			show("got response: %s", response);
 

@@ -67,9 +67,9 @@ public class TouchpointServiceServlet extends HttpServlet {
 			// create an ObjectInputStream from the request's input stream
 			ObjectInputStream ois = new ObjectInputStream(request.getInputStream());
 			// read an AbstractTouchpoint object from the stream
-			AbstractTouchpoint tp = (AbstractTouchpoint) ois.readObject();
+			AbstractTouchpoint tp = (AbstractTouchpoint)ois.readObject();
 			// call the create method on the executor and take its return value
-			exec.createTouchpoint(tp);
+			tp = exec.createTouchpoint(tp);
 			// set the response status as successful, using the appropriate
 			// constant from HttpServletResponse
 			response.setStatus(HttpServletResponse.SC_ACCEPTED);

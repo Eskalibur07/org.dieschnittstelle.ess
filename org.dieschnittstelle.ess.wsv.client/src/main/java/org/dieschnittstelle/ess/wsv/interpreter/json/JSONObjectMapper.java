@@ -215,9 +215,16 @@ public class JSONObjectMapper {
 				// info present
 				if (Modifier.isAbstract(((Class) type).getModifiers())) {
 					// TODO: include a handling for abstract classes considering
+
+					// SIOKI - Hier muss gemacht werden
+					// Erläuterung zu WSV 1
+
 					// the JsonTypeInfo annotation that might be set on type
 					throw new ObjectMappingException(
 							"cannot instantiate abstract class: " + type);
+
+					// Sioki - Json.getString ......
+
 				} else {
 					obj = ((Class) type).newInstance();
 				}

@@ -128,7 +128,7 @@ public class ShowTouchpointService {
 			// create a GetMethod
 
 			// UE SER1: Aendern Sie die URL von api->gui
-			// Aenderungen getestet
+			// Aenderungen getestet - GUI  de calismiyor
 			HttpGet get = new HttpGet(
 					"http://localhost:8888/org.dieschnittstelle.ess.ser/api/" + (async ? "async/touchpoints" : "touchpoints"));
 
@@ -263,15 +263,19 @@ public class ShowTouchpointService {
 			ByteArrayEntity bae = new ByteArrayEntity(bos.toByteArray());
 
 			// output stream
-
+			// logger.info("readAllTouchpoints(): about to execute request: " + get);
 			// set the entity on the request
 			request.setEntity(bae);
 			// execute the request, which will return a Future<HttpResponse> object
 			Future<HttpResponse> responseFuture = client.execute(request, null);
+			// logger.info("readAllTouchpoints(): received response future...");
 			// get the response from the Future object
 			HttpResponse response = responseFuture.get();
+			// logger.info("readAllTouchpoints(): received response value...");
 			// log the status line
-			show("got response: %s", response.getStatusLine());
+			show("got response: %s", response);
+
+			// show("got response: %s", response.getStatusLine());
 			// evaluate the result using getStatusLine(), use constants in
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 
@@ -285,7 +289,7 @@ public class ShowTouchpointService {
 				ObjectInputStream ois = new ObjectInputStream(response.getEntity().getContent());
 
 				// read the touchpoint object from the input stream
-				AbstractTouchpoint createdTp = (AbstractTouchpoint) ois.readObject();
+				AbstractTouchpoint createdTp = (AbstractTouchpoint)ois.readObject();
 
 				show("receivedTouchpoint: %s", createdTp);
 

@@ -29,6 +29,8 @@ public class ShoppingSessionFacadeClient implements ShoppingBusinessDelegate {
 		 * TODO use a proxy for the ShoppingSessionFacadeRemote interface
 		 */
 
+	// Sioki -ShoppingSessionFacadeClient - PurchaseClient olmali
+
 	public ShoppingSessionFacadeClient() {
 		try {
 			this.shoppingCartClient = new ShoppingCartClient();

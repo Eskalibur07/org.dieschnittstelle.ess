@@ -18,7 +18,8 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 		return prod;
 	}
 
-	// Düzeltilmeli!!!!
+	// Sioki - Düzeltilmeli!!!!
+
 	@Override
 	public List<AbstractProduct> readAllProducts() {
 		// TODO Auto-generated method stub

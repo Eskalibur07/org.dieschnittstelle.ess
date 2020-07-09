@@ -13,7 +13,17 @@ import java.util.Set;
 public class WebAPIRoot extends Application {
 
     @Override
+    public  Set<Class<?>> getClasses() {
+        Set klasses = new HashSet();
+        // /api/touchpoints/{id}
+        klasses.add(TouchpointCRUDServiceImpl.class);
+        klasses.add(JacksonJaxbJsonProvider.class);
+
+        return  klasses;
+    }
+
+    /*@Override
     public Set<Class<?>> getClasses() {
         return new HashSet(Arrays.asList(new Class[]{TouchpointCRUDServiceImpl.class, TouchpointCRUDServiceImplAsync.class, ProductCRUDServiceImpl.class, JacksonJaxbJsonProvider.class}));
-    }
+    }*/
 }

@@ -11,6 +11,8 @@ import org.dieschnittstelle.ess.entities.crm.StationaryTouchpoint;
 import org.dieschnittstelle.ess.entities.crm.AbstractTouchpoint;
 import org.dieschnittstelle.ess.entities.GenericCRUDExecutor;
 
+import static org.dieschnittstelle.ess.utils.Utils.show;
+
 public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
 	
 	protected static Logger logger = org.apache.logging.log4j.LogManager.getLogger(TouchpointCRUDServiceImpl.class);
@@ -39,23 +41,26 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
 		// read out the dataAccessor
 		this.touchpointCRUD = (GenericCRUDExecutor<AbstractTouchpoint>)servletContext.getAttribute("touchpointCRUD");
 		
-		logger.debug("read out the touchpointCRUD from the servlet context: " + this.touchpointCRUD);		
+		logger.debug("read out the touchpointCRUD from the servlet context: " + this.touchpointCRUD);
 	}
 	
 
 	@Override
 	public List<StationaryTouchpoint> readAllTouchpoints() {
+		show("readAllTouchpoints(): ");
 		return (List)this.touchpointCRUD.readAllObjects();
 	}
 
 	@Override
 	public StationaryTouchpoint createTouchpoint(StationaryTouchpoint touchpoint) {
-		return (StationaryTouchpoint)this.touchpointCRUD.createObject(touchpoint);	
+		show("createTouchpoint(): " + touchpoint);
+		return (StationaryTouchpoint)this.touchpointCRUD.createObject(touchpoint);
 	}
 
 	@Override
 	public boolean deleteTouchpoint(long id) {
-		return this.touchpointCRUD.deleteObject(id);	
+		show("deleteTouchpoint(): " + id);
+		return this.touchpointCRUD.deleteObject(id);
 	}
 
 	@Override

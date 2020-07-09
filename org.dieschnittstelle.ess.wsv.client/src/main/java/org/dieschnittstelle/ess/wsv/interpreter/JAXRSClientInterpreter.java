@@ -118,7 +118,7 @@ public class JAXRSClientInterpreter implements InvocationHandler {
             request = new HttpPost(url);
         }
         else {
-            throw new UnsupportedOperationException("Invoked method is out-of-scope. Change individual exercise implementation");
+            throw new UnsupportedOperationException("Invoked method is out-of-scope. Change individual exercise implementation" + meth);
         }
         // TODO: add a header on the request declaring that we accept json (for header names, you can use the constants declared in javax.ws.rs.core.HttpHeaders, for content types use the constants from javax.ws.rs.core.MediaType;)
         request.setHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON);

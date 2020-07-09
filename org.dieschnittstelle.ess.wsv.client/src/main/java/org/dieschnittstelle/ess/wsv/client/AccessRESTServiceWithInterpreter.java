@@ -28,7 +28,7 @@ public class AccessRESTServiceWithInterpreter {
 		 * TODO: create an instance of the invocation handler passing the service
 		 * interface and the base url
 		 */
-        JAXRSClientInterpreter invocationHandler = new JAXRSClientInterpreter(ITouchpointCRUDService.class,"http://localhost:8888/org.dieschnittstelle.ess.jrs/api/");
+        JAXRSClientInterpreter invocationHandler = new JAXRSClientInterpreter(ITouchpointCRUDService.class,"http://localhost:8888/org.dieschnittstelle.ess.jrs/api");
 
 		/*
 		 * TODO: create a client for the web service using Proxy.newProxyInstance()
@@ -43,6 +43,8 @@ public class AccessRESTServiceWithInterpreter {
 
         step();
 
+
+        // Sioki - ----------- read all: [] Read all bos minnna
         // 1) read out all touchpoints
         List<AbstractTouchpoint> tps = serviceProxy.readAllTouchpoints();
         show("read all: " + tps);

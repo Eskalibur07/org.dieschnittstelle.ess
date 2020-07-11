@@ -143,3 +143,4 @@ jboss/server/minimal/work/**/*
 # End of https://www.gitignore.io/api/java,jboss,java-web,intellij
 /.idea/runConfigurations/H2_DB.xml
 /.idea/runConfigurations/EJB.xml
+/.idea/runConfigurations/H2_DB.xml

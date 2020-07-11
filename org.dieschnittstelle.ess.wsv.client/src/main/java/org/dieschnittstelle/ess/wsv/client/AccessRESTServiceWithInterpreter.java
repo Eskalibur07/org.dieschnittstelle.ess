@@ -46,7 +46,7 @@ public class AccessRESTServiceWithInterpreter {
 
         // Sioki - ----------- read all: [] Read all bos minnna
         // 1) read out all touchpoints
-        List<AbstractTouchpoint> tps = serviceProxy.readAllTouchpoints();
+        List<StationaryTouchpoint> tps = serviceProxy.readAllTouchpoints();
         show("read all: " + tps);
 
 

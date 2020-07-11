@@ -29,7 +29,7 @@ public class ProductCRUDStateless implements ProductCRUDRemote {
 
     @Override
     public AbstractProduct updateProduct(AbstractProduct update) {
-        return null;
+        return em.merge(update);
     }
 
     @Override
@@ -39,6 +39,8 @@ public class ProductCRUDStateless implements ProductCRUDRemote {
 
     @Override
     public boolean deleteProduct(long productID) {
-        return false;
+        AbstractProduct product = em.find(AbstractProduct.class, productID);
+        em.remove(product);
+        return true;
     }
 }

@@ -9,6 +9,7 @@ import org.dieschnittstelle.ess.entities.GenericCRUDEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /*
@@ -26,7 +27,7 @@ public abstract class AbstractProduct implements Serializable, GenericCRUDEntity
 	private static final long serialVersionUID = 6940403029597060153L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
 	private long id;
 
 	private String name;

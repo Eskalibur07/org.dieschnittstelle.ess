@@ -18,7 +18,7 @@ public class ProductCRUDServiceImpl implements IProductCRUDService {
 		return prod;
 	}
 
-	// Sioki - Düzeltilmeli!!!!
+	// Sioki - Düzeltilmeli!!!! - hier mikalenjelo
 
 	@Override
 	public List<AbstractProduct> readAllProducts() {

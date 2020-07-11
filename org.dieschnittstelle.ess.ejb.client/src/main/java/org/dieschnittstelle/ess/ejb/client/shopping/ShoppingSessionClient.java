@@ -1,6 +1,5 @@
 package org.dieschnittstelle.ess.ejb.client.shopping;
 
-import com.sun.deploy.association.utility.AppUtility;
 import org.apache.logging.log4j.Logger;
 import org.dieschnittstelle.ess.ejb.client.ejbclients.EJBProxyFactory;
 import org.dieschnittstelle.ess.ejb.client.ejbclients.ShoppingCartClient;
@@ -12,10 +11,10 @@ import org.dieschnittstelle.ess.entities.crm.ShoppingCartItem;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 import org.dieschnittstelle.ess.entities.erp.Campaign;
 
-public class ShoppingSessionFacadeClient implements ShoppingBusinessDelegate {
+public class ShoppingSessionClient implements ShoppingBusinessDelegate {
 
 	protected static Logger logger = org.apache.logging.log4j.LogManager
-			.getLogger(ShoppingSessionFacadeClient.class);
+			.getLogger(ShoppingSessionClient.class);
 
 
 	private AbstractTouchpoint touchpoint;
@@ -31,7 +30,7 @@ public class ShoppingSessionFacadeClient implements ShoppingBusinessDelegate {
 
 	// Sioki -ShoppingSessionFacadeClient - PurchaseClient olmali
 
-	public ShoppingSessionFacadeClient() {
+	public ShoppingSessionClient() {
 		try {
 			this.shoppingCartClient = new ShoppingCartClient();
 			this.purchaseShoppingCartService = EJBProxyFactory
@@ -68,7 +67,7 @@ public class ShoppingSessionFacadeClient implements ShoppingBusinessDelegate {
 
 	@Override
 	public void purchase() throws ShoppingException {
-		// SIOKI - getshoppingCartId() yi görmüyor minna
+		// SIOKI - getshoppingCartId() yi görmüyor - 11.07 EJB+JPA 1 32.min
 		// ESS 10 PAT-2 Demo PAT1-teil1 53:34
 		/*this.purchaseShoppingCartService
 				.purchase(shoppingCartClient.getshoppingCartEntityId(), touchpoint.getId(), customer.getId());*/

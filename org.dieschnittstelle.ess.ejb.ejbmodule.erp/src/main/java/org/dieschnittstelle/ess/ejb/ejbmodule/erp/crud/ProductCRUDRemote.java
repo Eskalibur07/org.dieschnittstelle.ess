@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/products")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
+
 public interface ProductCRUDRemote {
 
 	@NotNull

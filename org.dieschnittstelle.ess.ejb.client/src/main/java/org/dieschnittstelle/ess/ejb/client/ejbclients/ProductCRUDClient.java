@@ -7,6 +7,8 @@ import org.dieschnittstelle.ess.ejb.client.Constants;
 import org.dieschnittstelle.ess.ejb.ejbmodule.erp.crud.ProductCRUDRemote;
 import org.dieschnittstelle.ess.entities.erp.AbstractProduct;
 
+import static org.dieschnittstelle.ess.utils.Utils.show;
+
 public class ProductCRUDClient implements ProductCRUDRemote {
 
 	private ProductCRUDRemote ejbProxy;
@@ -21,7 +23,12 @@ public class ProductCRUDClient implements ProductCRUDRemote {
 		// TODO: KOMMENTIEREN SIE DIE FOLGENDE ZUWEISUNG VON IDs UND DIE RETURN-ANWEISUNG AUS
 //		prod.setId(Constants.nextId());
 //		return prod;
-
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			show("json sent to to server" + objectMapper.writeValueAsString(prod));
+		}catch (Exception ex) {
+			ex.printStackTrace();
+		}
 
 		// TODO: KOMMENTIEREN SIE DEN FOLGENDEN CODE, INKLUSIVE DER ID ZUWEISUNG, EIN
 		AbstractProduct created = ejbProxy.createProduct(prod);

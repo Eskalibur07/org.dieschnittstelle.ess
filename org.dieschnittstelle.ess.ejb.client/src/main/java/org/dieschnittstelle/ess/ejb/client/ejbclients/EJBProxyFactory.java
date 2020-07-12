@@ -69,7 +69,7 @@ public class EJBProxyFactory {
             props.load(EJBProxyFactory.class.getClassLoader().getResourceAsStream("ess-ejb-client.properties"));
             logger.info("initialise(): loaded properties: " + props);
 
-            initialise(props.getProperty("ess.ejb.client.webAPIBaseUrl", Constants.WEB_API_BASE_URL),Boolean.valueOf(props.getProperty("esa.ejb.client.useWebAPIAsDefault","false")));
+            initialise(props.getProperty("ess.ejb.client.webAPIBaseUrl", Constants.WEB_API_BASE_URL),Boolean.valueOf(props.getProperty("esa.ejb.client.useWebAPIAsDefault","true")));
         }
         catch (Exception e) {
             throw new EJBProxyException("initialise(): got exception trying to read properties from file: " + e,e);

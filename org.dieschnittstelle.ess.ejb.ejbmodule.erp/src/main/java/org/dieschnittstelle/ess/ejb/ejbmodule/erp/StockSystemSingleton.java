@@ -78,7 +78,11 @@ public class StockSystemSingleton implements StockSystemLocal{
 
     @Override
     public int getTotalUnitsOnStock(IndividualisedProductItem product) {
-        return 0;
+        List<StockItem> stockItems = siCrud.readStockItemsForProduct(product);
+        return stockItems.stream()
+                .mapToInt(si -> si.getUnits())
+                .sum(); //lambda
+
     }
 
     @Override

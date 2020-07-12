@@ -13,23 +13,23 @@ import java.util.List;
 @Stateless
 public class StockItemCRUDStateless implements StockItemCRUDLocal {
 
-    @PersistenceContext(unitName = "erp_PU")
+    @PersistenceContext(unitName="erp_PU")
     private EntityManager em;
 
     @Override
     public StockItem createStockItem(StockItem item) {
-        em.persist(item);
+        em.merge(item);
         return item;
     }
 
     @Override
     public StockItem readStockItem(IndividualisedProductItem prod, PointOfSale pos) {
-       Query qu = em.createQuery("SELECT si FROM StockItem si WHERE si.pos = " + pos.getId() + " AND si.prduct = " + prod.getId());
-       List<StockItem> stockItems = qu.getResultList();
-       if (stockItems.size() > 0) {
-           return stockItems.get(0);
-       }
-       return null;
+        Query qu = em.createQuery("SELECT si FROM StockItem si WHERE si.pos="+pos.getId() +" AND si.product=" + prod.getId());
+        List<StockItem> stockItems = qu.getResultList();
+        if (stockItems.size() > 0) {
+            return stockItems.get(0);
+        }
+        return null;
     }
 
     @Override
@@ -44,11 +44,13 @@ public class StockItemCRUDStateless implements StockItemCRUDLocal {
 
     @Override
     public List<StockItem> readStockItemsForProduct(IndividualisedProductItem prod) {
-        return null;
+        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.product =" + prod.getId());
+        return query.getResultList();
     }
 
     @Override
     public List<StockItem> readStockItemsForPointOfSale(PointOfSale pos) {
-        return null;
+        Query query = em.createQuery("SELECT si FROM StockItem si WHERE si.pos =" + pos.getId());
+        return query.getResultList();
     }
 }

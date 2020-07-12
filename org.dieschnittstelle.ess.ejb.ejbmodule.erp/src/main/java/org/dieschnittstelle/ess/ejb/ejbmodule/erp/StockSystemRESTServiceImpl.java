@@ -7,6 +7,7 @@ import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.ws.rs.BadRequestException;
 import java.util.List;
 
 @Stateless
@@ -33,7 +34,11 @@ public class StockSystemRESTServiceImpl implements StockSystemRESTService {
     // Ab hier muss gemacht werden
     @Override
     public List<IndividualisedProductItem> getProductsOnStock(long pointOfSaleId) {
-        return null;
+        if (pointOfSaleId > 0){
+            return stockSystem.getProductsOnStock(pointOfSaleId);
+        }else{
+            return stockSystem.getAllProductsOnStock();
+        }
     }
 
     @Override
@@ -43,7 +48,15 @@ public class StockSystemRESTServiceImpl implements StockSystemRESTService {
 
     @Override
     public int getUnitsOnStock(long productId, long pointOfSaleId) {
-        return 0;
+        if (productId > 0 && pointOfSaleId > 0){
+            AbstractProduct prod = productCRUD.readProduct(productId);
+            return stockSystem.getUnitsOnStock((IndividualisedProductItem)prod,pointOfSaleId);
+        } else if (productId > 0) {
+            AbstractProduct prod = productCRUD.readProduct(productId);
+            return stockSystem.getTotalUnitsOnStock((IndividualisedProductItem)prod);
+        } else{
+            throw new BadRequestException("productId: "+productId+" dose not refer to an IndividualproductItem!");
+        }
     }
 
     @Override
@@ -53,6 +66,11 @@ public class StockSystemRESTServiceImpl implements StockSystemRESTService {
 
     @Override
     public List<Long> getPointsOfSale(long productId) {
-        return null;
+        AbstractProduct prod = productCRUD.readProduct(productId);
+        if(prod instanceof IndividualisedProductItem){
+            return stockSystem.getPointsOfSale((IndividualisedProductItem)prod);
+        }else{
+            throw new BadRequestException("At least productId must refer to an existing product.");
+        }
     }
 }

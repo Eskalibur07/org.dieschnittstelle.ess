@@ -17,6 +17,7 @@ public class WebAPIRoot extends Application {
         Set klasses = new HashSet();
         // /api/touchpoints/{id}
         klasses.add(TouchpointCRUDServiceImpl.class);
+        klasses.add(ProductCRUDServiceImpl.class);
         klasses.add(JacksonJaxbJsonProvider.class);
 
         return klasses;

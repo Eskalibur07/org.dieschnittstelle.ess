@@ -27,14 +27,14 @@ import java.util.List;
 public interface IProductCRUDService {
 
 	@POST
-	public AbstractProduct createProduct(AbstractProduct prod);
+	AbstractProduct createProduct(AbstractProduct prod);
 
 	@GET
-	public List<AbstractProduct> readAllProducts();
+	List<AbstractProduct> readAllProducts();
 
 	@PUT
 	@Path("/{productId}")
-	public AbstractProduct updateProduct(@PathParam("productId") long id, AbstractProduct update);
+	AbstractProduct updateProduct(@PathParam("productId") long id, AbstractProduct update);
 
 	@DELETE
 	@Path("/{productId}")
@@ -42,6 +42,6 @@ public interface IProductCRUDService {
 
 	@GET
 	@Path("/{productId}")
-	public AbstractProduct readProduct(@PathParam("productId") long id);
+	AbstractProduct readProduct(@PathParam("productId") long id);
 			
 }

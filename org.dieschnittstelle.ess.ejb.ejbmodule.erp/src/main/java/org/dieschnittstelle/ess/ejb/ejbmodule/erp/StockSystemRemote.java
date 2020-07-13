@@ -5,6 +5,7 @@ import java.util.List;
 import org.dieschnittstelle.ess.entities.erp.IndividualisedProductItem;
 
 import javax.ejb.Remote;
+import javax.ws.rs.GET;
 
 /**
  * TODO JPA4:
@@ -70,6 +71,7 @@ public interface StockSystemRemote {
 	 * @param pointOfSaleId
 	 * @return
 	 */
+	@GET
     int getUnitsOnStock(IndividualisedProductItem product, long pointOfSaleId);
 
 	/**

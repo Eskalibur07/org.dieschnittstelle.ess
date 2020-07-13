@@ -31,6 +31,10 @@ public class ShoppingCartClient implements ShoppingCartRemote {
 		}
 	}
 
+	public long getShoppingCartEntityId() {
+		return this.shoppingCartEntityId;
+	}
+
 	@Override
 	public void addItem(ShoppingCartItem product) {
 		if (ejbProxy != null) {

@@ -69,8 +69,8 @@ public class ShoppingSessionClient implements ShoppingBusinessDelegate {
 	public void purchase() throws ShoppingException {
 		// SIOKI - getshoppingCartId() yi görmüyor - 11.07 EJB+JPA 1 32.min
 		// ESS 10 PAT-2 Demo PAT1-teil1 53:34
-		/*this.purchaseShoppingCartService
-				.purchase(shoppingCartClient.getshoppingCartEntityId(), touchpoint.getId(), customer.getId());*/
+		this.purchaseShoppingCartService
+				.purchase(shoppingCartClient.getShoppingCartEntityId(), touchpoint.getId(), customer.getId());
 	}
 
 }

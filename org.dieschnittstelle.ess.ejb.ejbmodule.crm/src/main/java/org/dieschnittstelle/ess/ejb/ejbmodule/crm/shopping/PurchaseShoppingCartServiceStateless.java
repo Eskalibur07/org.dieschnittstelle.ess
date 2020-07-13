@@ -96,7 +96,7 @@ public class PurchaseShoppingCartServiceStateless implements PurchaseShoppingCar
         }
     }
 
-    public void purchase()  throws ShoppingException {
+    public void purchaseNow()  throws ShoppingException {
         logger.info("purchase()");
 
         if (this.customer == null || this.touchpoint == null) {
@@ -182,7 +182,7 @@ public class PurchaseShoppingCartServiceStateless implements PurchaseShoppingCar
         this.touchpoint = touchpointCRUDLocal.readTouchpoint(touchpointId);
         this.shoppingCart = shoppingCartServiceLocal.getCartForId(shoppingCartId);
 
-        purchase();
+        purchaseNow();
 
         // cleanup
 //        this.customer = null;

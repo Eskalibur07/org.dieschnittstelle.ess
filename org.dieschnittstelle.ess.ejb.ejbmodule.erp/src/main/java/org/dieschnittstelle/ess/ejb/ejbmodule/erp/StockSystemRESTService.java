@@ -50,7 +50,7 @@ public interface StockSystemRESTService {
 
 	/**
 	 * returns the units on stock for a product at some point of sale
-	 */
+	 */ // SERKAN BI SERKAN ABEEEEEEEEEY
 	@GET
 	int getUnitsOnStock(@QueryParam("productId") long productId, @QueryParam("pointOfSaleId") long pointOfSaleId);
 

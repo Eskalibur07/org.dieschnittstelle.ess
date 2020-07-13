@@ -20,10 +20,10 @@ public class TouchpointServiceServlet extends HttpServlet {
 	public TouchpointServiceServlet() {
 		show("TouchpointServiceServlet: constructor invoked\n");
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) {
+						 HttpServletResponse response) {
 
 		logger.info("doGet()");
 
@@ -50,34 +50,36 @@ public class TouchpointServiceServlet extends HttpServlet {
 		}
 
 	}
-	
 
-	@Override	
+
+	@Override
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) {
+						  HttpServletResponse response) {
 
 		// assume POST will only be used for touchpoint creation, i.e. there is
 		// no need to check the uri that has been used
 
 		// obtain the executor for reading out the touchpoints from the servlet context using the touchpointCRUD attribute
-
 		TouchpointCRUDExecutor exec = (TouchpointCRUDExecutor) getServletContext().getAttribute("touchpointCRUD");
+
 
 		try {
 			// create an ObjectInputStream from the request's input stream
 			ObjectInputStream ois = new ObjectInputStream(request.getInputStream());
 			// read an AbstractTouchpoint object from the stream
-			AbstractTouchpoint tp = (AbstractTouchpoint)ois.readObject();
+			AbstractTouchpoint tp = (AbstractTouchpoint) ois.readObject();
+
 			// call the create method on the executor and take its return value
 			tp = exec.createTouchpoint(tp);
+
 			// set the response status as successful, using the appropriate
 			// constant from HttpServletResponse
 			response.setStatus(HttpServletResponse.SC_CREATED);
 
-			ObjectOutputStream oos = new ObjectOutputStream(response.getOutputStream());
 			// then write the object to the response's output stream, using a
 			// wrapping ObjectOutputStream
-		
+			ObjectOutputStream oos = new ObjectOutputStream(response.getOutputStream());
+
 			// ... and write the object to the stream
 			oos.writeObject(tp);
 
@@ -87,7 +89,29 @@ public class TouchpointServiceServlet extends HttpServlet {
 
 	}
 
+	@Override
+	protected void doDelete(HttpServletRequest request,
+							HttpServletResponse response){
+
+		try {
+			int id = Integer.parseInt(request.getPathInfo().substring(request.getPathInfo().lastIndexOf("/")+1));
 
 
-	
+			TouchpointCRUDExecutor exec = (TouchpointCRUDExecutor) getServletContext().getAttribute("touchpointCRUD");
+			// create an ObjectInputStream from the request's input stream
+			//ObjectInputStream ois = new ObjectInputStream(request.getInputStream());
+			// read an AbstractTouchpoint object from the stream
+			//AbstractTouchpoint tp = (AbstractTouchpoint) ois.readObject();
+
+			// call the delete method on the executor and pass in the id of the tp
+			exec.deleteTouchpoint(id);
+			//show("NOA pathinfo: %s", request.getPathInfo());
+			// set the response status as successful, using the appropriate
+			// constant from HttpServletResponse
+			//response.setStatus(HttpServletResponse.SC_OK);
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

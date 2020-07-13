@@ -37,19 +37,23 @@ public class ProductCRUDService {
 	public List<AbstractProduct> readAllProducts() {
 		return new ArrayList();
 	}
+
 	@GET
 	public AbstractProduct createProduct(AbstractProduct product) {
 		return product;
 	}
+
 	@PUT
 	public AbstractProduct updateProduct(AbstractProduct update) {
 		return update;
 	}
+
 	@DELETE
 	@Path("/{productId")
 	public boolean deleteProduct(@PathParam("/{productId") long id) {
 		return false;
 	}
+
 	@GET
 	@Path("/{productId")
 	public AbstractProduct readProduct(@PathParam("/{productId") long id) {

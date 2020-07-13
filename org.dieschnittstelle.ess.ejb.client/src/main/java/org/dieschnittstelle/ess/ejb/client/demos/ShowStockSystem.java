@@ -8,6 +8,8 @@ import org.dieschnittstelle.ess.ejb.client.ejbclients.ProductCRUDClient;
 import org.dieschnittstelle.ess.ejb.client.ejbclients.StockSystemClient;
 import org.dieschnittstelle.ess.ejb.client.ejbclients.TouchpointAccessClient;
 
+import javax.ws.rs.BadRequestException;
+
 import static org.dieschnittstelle.ess.ejb.client.Constants.*;
 import static org.dieschnittstelle.ess.utils.Utils.*;
 
@@ -41,6 +43,8 @@ public class ShowStockSystem {
 			createTouchpoints();
 			createStock();
 			showStock();
+		} catch (BadRequestException e) {
+			logger.error("got bad request exception: " + e.getResponse(), e);
 		} catch (Exception e) {
 			logger.error("got exception: " + e, e);
 		}
@@ -67,7 +71,7 @@ public class ShowStockSystem {
 		productCRUD.createProduct(PRODUCT_1);
 		Utils.step();
 		productCRUD.createProduct(PRODUCT_2);
-		// productCRUD.createProduct(CAMPAIGN_1);
+		//productCRUD.createProduct(CAMPAIGN_1);
 		//productCRUD.createProduct(CAMPAIGN_2);
 		
 		show("created products: " + PRODUCT_1 + ", " + PRODUCT_2);
@@ -96,11 +100,13 @@ public class ShowStockSystem {
 		stockSystemClient.addToStock(PRODUCT_1,
 				TOUCHPOINT_1.getErpPointOfSaleId(), 100);
 		stockSystemClient.addToStock(PRODUCT_1,
+				TOUCHPOINT_1.getErpPointOfSaleId(), 50);
+		stockSystemClient.addToStock(PRODUCT_1,
 				TOUCHPOINT_2.getErpPointOfSaleId(), 90);
 		stockSystemClient.addToStock(PRODUCT_2,
 				TOUCHPOINT_1.getErpPointOfSaleId(), 80);
-//		stockSystemClient.addToStock(PRODUCT_2,
-//				TOUCHPOINT_2.getErpPointOfSaleId(), 100);
+		//stockSystemClient.addToStock(PRODUCT_2,
+		//		TOUCHPOINT_2.getErpPointOfSaleId(), 100);
 
 		System.out.println("\n***************** created stock\n");
 	}

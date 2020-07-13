@@ -18,7 +18,7 @@ public class TestTouchpointService {
 		// create the accessor for the service
 		ShowTouchpointService client = new ShowTouchpointService();
 		client.setStepwise(false);
-		
+
 		// create a touchpoint
 		Address addr = new Address("Luxemburger Strasse", "10", "13353",
 				"Berlin");

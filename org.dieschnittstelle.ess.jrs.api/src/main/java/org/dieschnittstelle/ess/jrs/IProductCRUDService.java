@@ -28,15 +28,20 @@ public interface IProductCRUDService {
 
 	@POST
 	public AbstractProduct createProduct(AbstractProduct prod);
+
 	@GET
 	public List<AbstractProduct> readAllProducts();
+
 	@PUT
-	public AbstractProduct updateProduct(long id, AbstractProduct update);
+	@Path("/{productId}")
+	public AbstractProduct updateProduct(@PathParam("productId") long id, AbstractProduct update);
+
 	@DELETE
-	@Path("/{productId")
-	boolean deleteProduct(long id);
+	@Path("/{productId}")
+	boolean deleteProduct(@PathParam("productId") long id);
+
 	@GET
-	@Path("/{productId")
-	public AbstractProduct readProduct(long id);
+	@Path("/{productId}")
+	public AbstractProduct readProduct(@PathParam("productId") long id);
 			
 }

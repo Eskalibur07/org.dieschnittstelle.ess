@@ -1,5 +1,6 @@
 package org.dieschnittstelle.ess.ejb.client.ejbclients;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.dieschnittstelle.ess.ejb.ejbmodule.erp.StockSystemRemote;
@@ -54,6 +55,7 @@ public class StockSystemClient implements StockSystemRemote {
 	public List<Long> getPointsOfSale(IndividualisedProductItem product) {
 		return this.ejbProxy.getPointsOfSale(product);
 //		return null;
+//		return new ArrayList<>();
 	}
 
 

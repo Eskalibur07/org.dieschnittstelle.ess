@@ -33,7 +33,7 @@ public class TouchpointCRUDStateless implements TouchpointCRUDRemote,
 		/*
 		 * UE ADD1: swap true/false
 		 */		
-		if (/*true*/false) {
+		if (true/*false*/) {
 			throw new RuntimeException(new ShoppingException(
 					ShoppingException.ShoppingSessionExceptionReason.UNKNOWN));
 		} else {

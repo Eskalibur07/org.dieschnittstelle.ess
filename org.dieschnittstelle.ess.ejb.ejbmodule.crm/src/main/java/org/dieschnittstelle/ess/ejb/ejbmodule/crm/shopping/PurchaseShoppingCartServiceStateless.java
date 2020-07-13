@@ -26,6 +26,7 @@ public class PurchaseShoppingCartServiceStateless implements PurchaseShoppingCar
      * the three beans that are used
      */
 
+    // 13.07.2020 Sioki
     // ESS 10 PAT-3 Demo PAT1 - teil 2 dakkika 37 Ubungla alakali
     // purchase welche hier ganz unten Steht muss umbenannt werden Refaktor- Interface Client seite alles umbennant werden
 

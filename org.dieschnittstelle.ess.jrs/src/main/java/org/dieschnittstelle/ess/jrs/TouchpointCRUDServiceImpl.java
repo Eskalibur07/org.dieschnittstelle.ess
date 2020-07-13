@@ -21,9 +21,11 @@ public class TouchpointCRUDServiceImpl implements ITouchpointCRUDService {
 	 * this accessor will be provided by the ServletContext, to which it is written by the TouchpointServletContextListener
 	 */
 
-	// private ServletContext servletContext;
-	// @Context
-	// private HttpServletRequest servletRequest;
+	@Context
+	private ServletContext servletContext;
+
+	@Context
+	private HttpServletRequest servletRequest;
 
 	private GenericCRUDExecutor<AbstractTouchpoint> touchpointCRUD;
 

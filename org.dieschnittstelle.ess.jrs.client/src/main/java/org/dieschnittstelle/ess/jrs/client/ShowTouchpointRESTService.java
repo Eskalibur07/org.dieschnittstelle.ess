@@ -31,7 +31,7 @@ public class ShowTouchpointRESTService {
 		 * this uses the most recent resteasy client api rather than the deprecated ProxyFactory.create() method
 		 */
 		ResteasyClient client = new ResteasyClientBuilder().build();
-		ResteasyWebTarget target = client.target("http://localhost:8888/org.dieschnittstelle.ess.jrs/api/" + (async ? "async/" : ""));
+		ResteasyWebTarget target = client.target("http://localhost:8888/org.dieschnittstelle.ess.jrs/api" + (async ? "async/" : ""));
 		ITouchpointCRUDService serviceProxy = target.proxy(ITouchpointCRUDService.class);
 
 		show("serviceProxy: " + serviceProxy + " of class: " + serviceProxy.getClass());
